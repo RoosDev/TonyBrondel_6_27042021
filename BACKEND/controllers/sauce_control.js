@@ -80,10 +80,10 @@ exports.getAllSauces = (req, res, next) => {
 exports.addAVote = (req, res, next) => {
   const like = req.body.like;
   const userId = req.body.userId;
-  const bookId = req.params.id;
+  const sauceId = req.params.id;
   
-  Book
-    .findOne({ bookId})
+  Sauce
+    .findOne({ sauceId})
     .then(
       [{
         $switch:{
@@ -193,5 +193,6 @@ exports.addAVote = (req, res, next) => {
   //     break;
   //   default:
   //     console.log(err);
+  
   // }
 };
