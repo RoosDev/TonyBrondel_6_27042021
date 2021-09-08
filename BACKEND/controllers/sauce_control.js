@@ -193,6 +193,5 @@ exports.addAVote = (req, res, next) => {
   //     break;
   //   default:
   //     console.log(err);
-  
   // }
 };
