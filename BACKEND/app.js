@@ -11,7 +11,6 @@ const userRoutes = require("./routes/user_routes");
 // Mise en place des variables d'environnement
 const dotenv = require("dotenv");
 dotenv.config();
-// const URL_Site = process.env.URL_Site;
 const URL_MonDb = process.env.URL_DB;
 
 //paramétrage de la connexion à la DB MongoDB
@@ -21,13 +20,19 @@ mongoose
   .catch(() => console.log("Connexion à MongoDB échouée !"));
 
 const app = express();
+// Sécurisation avec le package Helmet 
 app.use(helmet());
+app.use(
+  helmet.frameguard({
+    action: "deny",
+  })
+);
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
     "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content, Accept, Content-Type, Authorization"
+    "Origin, X-Requested-With, Content, Accept, Content-Type, Authorization, "
   );
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
   next();
@@ -39,12 +44,5 @@ app.use(express.json());
 app.use("/images", express.static(path.join(__dirname, "images")));
 app.use("/api/sauces", sauceRoutes);
 app.use("/api/auth", userRoutes);
-
-// Gestionnaire d'erreurs sous express
-// app.use(function(err, req, res, next) {
-//   console.error(err.stack);
-//   res.status(500).send('Something broke!');
-//   res.status(404).redirect(URL_Site);
-// });
 
 module.exports = app;

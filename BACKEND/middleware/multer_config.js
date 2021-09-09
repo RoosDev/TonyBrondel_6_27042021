@@ -16,6 +16,14 @@ const storage = multer.diskStorage({
     const justName = name.split("." + extension).join("__");
     callback(null, justName + Date.now() + "." + extension);
   },
+  fileFilter: (req, file, cb) => {
+    const filetypes = /jpeg|jpg|png/;
+    const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
+    const mimetype = filetypes.test(file.mimetype);
+    
+    if (mimetype && extname) return cb(null, true);
+    else cb("Error: Images Only!") && console.log("Un format de fichier non authorisé a tenté d'être envoyé. Loupé !! :)");
+}
 });
 
 module.exports = multer({ storage }).single("image");

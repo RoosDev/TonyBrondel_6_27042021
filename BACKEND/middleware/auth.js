@@ -4,7 +4,6 @@ const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv");
 dotenv.config();
 const MY_APP_SECRET = process.env.APP_SECRET_KEY;
-const URL_Site = process.env.URL_Site;
 
 module.exports = (req, res, next) => {
   try {
@@ -21,6 +20,5 @@ module.exports = (req, res, next) => {
     }
   } catch (error) {
     console.log(res.status(401).json({ error: error })); // affiche l erreur dans la console
-    res.status(401).redirect(URL_Site); // redirection à la racine du site sur la page de login
   }
 };
