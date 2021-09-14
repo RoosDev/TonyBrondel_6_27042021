@@ -1,12 +1,6 @@
-const Sauce = require("../models/Sauce_models");
-
 const fs = require("fs");
-// const path = require("path");
-// const { start } = require("repl");
 
-// Mise en place des variables d'environnement
-const dotenv = require("dotenv");
-dotenv.config();
+const Sauce = require("../models/Sauce_models");
 
 exports.createSauce = (req, res, next) => {
   const sauceObject = JSON.parse(req.body.sauce);
@@ -26,8 +20,6 @@ exports.createSauce = (req, res, next) => {
     usersLiked: [],
     usersDisliked: [],
   });
-
-  console.log("sauce : " + sauce);
 
   sauce
     .save()
@@ -103,9 +95,7 @@ exports.addAVote = (req, res, next) => {
           );
         break;
       case 0:
-        console.log("sauce userlike : " + sauce.usersLiked);
         if (sauce.usersLiked.includes(userId)) {
-          console.log("yes he like ... for the moment");
           Sauce.updateOne(
             { _id: sauceId },
             { $inc: { likes: -1 }, $pull: { usersLiked: userId } }

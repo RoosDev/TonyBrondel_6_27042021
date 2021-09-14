@@ -20,7 +20,7 @@ mongoose
   .catch(() => console.log("Connexion à MongoDB échouée !"));
 
 const app = express();
-// Sécurisation avec le package Helmet 
+// Sécurisation avec le package Helmet
 app.use(helmet());
 app.use(
   helmet.frameguard({
