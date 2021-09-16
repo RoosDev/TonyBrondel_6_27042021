@@ -31,6 +31,8 @@ Les étapes d'installation :
     $npm start
     ```
 Dans un nouveau Powershell / invite de commande , retourner dans le dossier racine où à été cloné le dépot git puis taper :
+
+
     ```
     $cd TonyBrondel_6_27042021/FRONTEND
     $npm install
