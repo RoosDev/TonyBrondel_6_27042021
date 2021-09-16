@@ -26,11 +26,13 @@ Les étapes d'installation :
 
     ```
     $git clone https://github.com/RoosDev/TonyBrondel_6_27042021.git
-    $cd BACKEND
+    $cd TonyBrondel_6_27042021/BACKEND
     $npm install
     $npm start
-    $cd ..
-    $cd FRONTEND
+    ```
+Dans un nouveau Powershell / invite de commande , retourner dans le dossier racine où à été cloné le dépot git puis taper :
+    ```
+    $cd TonyBrondel_6_27042021/FRONTEND
     $npm install
     $npm start
 
