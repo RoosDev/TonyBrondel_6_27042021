@@ -39,6 +39,7 @@ Les étapes d'installation :
 5. Lorsque vous avez ce fichier .env placez le dans le dossier BACKEND et ouvrez une fenetre de commande dans ce même dossier puis taper : 
 
     ```
+    mkdir images/
     $npm start
     ```
 
